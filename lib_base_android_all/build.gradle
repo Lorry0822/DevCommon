@@ -33,8 +33,19 @@ dependencies {
 
     /* v7 支持*/
     implementation "androidx.appcompat:appcompat:${rootProject.ext.dependencies.androidx_appcompat_version}"
+    /* RecyclerView */
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.dependencies.androidx_lib_version}"
+    /* Design 支持 */
+    implementation "com.google.android.material:material:${rootProject.ext.dependencies.androidx_lib_version}"
 
-    /* 基本库 */
-    debugApi project(":lib_base_android")
-    releaseApi "com.github.Lorry0822.DevCommon:lib_base_android:$lib_version"
+    /* Glide */
+    compileOnly "com.github.bumptech.glide:glide:${rootProject.ext.dependencies.glide_version}"
+
+    debugApi project(":lib_base_android_databinding")
+    debugApi project(":lib_base_android_ui")
+    debugApi project(":lib_base_android_widget")
+
+    releaseApi "com.github.Lorry0822.DevCommon:lib_base_android_databinding:$lib_version"
+    releaseApi "com.github.Lorry0822.DevCommon:lib_base_android_ui:$lib_version"
+    releaseApi "com.github.Lorry0822.DevCommon:lib_base_android_widget:$lib_version"
 }
