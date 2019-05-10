@@ -20,13 +20,19 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    dataBinding { // DataBinding 开启
+        enabled true
+    }
 }
 
 dependencies {
+
     /* Kotlin 支持 */
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     /* v7 支持*/
     implementation "androidx.appcompat:appcompat:${rootProject.ext.dependencies.androidx_appcompat_version}"
-    /* RecyclerView */
-    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.dependencies.androidx_lib_version}"
+
+    compileOnly "io.reactivex.rxjava2:rxjava:${rootProject.ext.dependencies.rxjava2_version}"
 }

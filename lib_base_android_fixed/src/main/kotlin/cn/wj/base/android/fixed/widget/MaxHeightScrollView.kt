@@ -1,25 +1,26 @@
-package cn.wj.base.android.widget
+package cn.wj.base.android.fixed.widget
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.widget.NestedScrollView
+import android.widget.ScrollView
+import cn.wj.base.android.fixed.R
 
 /**
  * 可设置最大高度 ScrollView
  */
-class MaxHeightNestedScrollView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : NestedScrollView(context, attrs, defStyleAttr) {
+class MaxHeightScrollView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : ScrollView(context, attrs, defStyleAttr) {
 
     /** 最大高度 */
     private var mMaxHeight = -1f
 
     init {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.MaxHeightNestedScrollView, defStyleAttr, 0)
-        mMaxHeight = a.getDimension(R.styleable.MaxHeightNestedScrollView_mhnsv_maxHeight, -1f)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.MaxHeightScrollView, defStyleAttr, 0)
+        mMaxHeight = a.getDimension(R.styleable.MaxHeightScrollView_mhsv_maxHeight, -1f)
         a.recycle()
     }
 
@@ -33,8 +34,4 @@ class MaxHeightNestedScrollView @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, newHeightMeasureSpec)
     }
 
-    fun setMaxHeight(height: Float) {
-        mMaxHeight = height
-        requestLayout()
-    }
 }

@@ -1,17 +1,17 @@
-package cn.wj.base.android.widget
+package cn.wj.base.android.fixed.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.view.View
 import androidx.viewpager.widget.ViewPager
+import cn.wj.base.android.fixed.R
 
 /**
  * 自定义 ViewPager，可配置能否滑动
  */
 class CustomViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
-    ViewPager(context, attrs) {
+        ViewPager(context, attrs) {
 
     /** 是否允许滑动 */
     private var mScrollable = true
@@ -41,12 +41,12 @@ class CustomViewPager @JvmOverloads constructor(context: Context, attrs: Attribu
             var height = 0
             for (i in 0 until childCount) {
                 val child = getChildAt(i)
-                child.measure(widthMeasureSpec, View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED))
+                child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED))
                 val h = child.measuredHeight
                 if (h > height) height = h
             }
 
-            newHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY)
+            newHeightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
             super.onMeasure(widthMeasureSpec, newHeightMeasureSpec)
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)

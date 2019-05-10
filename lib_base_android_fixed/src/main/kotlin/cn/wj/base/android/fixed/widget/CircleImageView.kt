@@ -1,4 +1,4 @@
-package cn.wj.base.android.widget
+package cn.wj.base.android.fixed.widget
 
 import android.content.Context
 import android.graphics.*
@@ -8,13 +8,12 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.text.TextUtils
 import android.util.AttributeSet
-import android.view.View
-import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageView
+import cn.wj.base.android.fixed.R
 
 /**
  * 圆形 ImageView
@@ -156,11 +155,11 @@ class CircleImageView
         }
     }
 
-    override fun getScaleType(): ImageView.ScaleType {
+    override fun getScaleType(): ScaleType {
         return SCALE_TYPE
     }
 
-    override fun setScaleType(scaleType: ImageView.ScaleType) {
+    override fun setScaleType(scaleType: ScaleType) {
         if (scaleType != SCALE_TYPE) {
             throw IllegalArgumentException(String.format("ScaleType %s not supported.", scaleType))
         }
@@ -190,9 +189,9 @@ class CircleImageView
         if (!TextUtils.isEmpty(textString)) {
             val fm = mTextPaint.fontMetricsInt
             canvas.drawText(
-                textString!!,
-                width / 2 - mTextPaint.measureText(textString) / 2,
-                (height / 2 - fm.descent + (fm.bottom - fm.top) / 2).toFloat(), mTextPaint
+                    textString!!,
+                    width / 2 - mTextPaint.measureText(textString) / 2,
+                    (height / 2 - fm.descent + (fm.bottom - fm.top) / 2).toFloat(), mTextPaint
             )
         }
     }
@@ -326,7 +325,7 @@ class CircleImageView
 
         mBorderRect.set(0f, 0f, width.toFloat(), height.toFloat())
         mBorderRadius =
-            Math.min((mBorderRect.height() - mBorderWidth) / 2.0f, (mBorderRect.width() - mBorderWidth) / 2.0f)
+                Math.min((mBorderRect.height() - mBorderWidth) / 2.0f, (mBorderRect.width() - mBorderWidth) / 2.0f)
 
         mDrawableRect.set(mBorderRect)
         if (!mBorderOverlay) {
@@ -368,13 +367,13 @@ class CircleImageView
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        val widthMeasureSpecMode = View.MeasureSpec.getMode(widthMeasureSpec)
-        val heightMeasureSpecMode = View.MeasureSpec.getMode(heightMeasureSpec)
+        val widthMeasureSpecMode = MeasureSpec.getMode(widthMeasureSpec)
+        val heightMeasureSpecMode = MeasureSpec.getMode(heightMeasureSpec)
 
         if (!TextUtils.isEmpty(textString)) {
             var textMeasuredSize = mTextPaint.measureText(textString).toInt()
             textMeasuredSize += 2 * mTextPadding
-            if (widthMeasureSpecMode == View.MeasureSpec.AT_MOST && heightMeasureSpecMode == View.MeasureSpec.AT_MOST) {
+            if (widthMeasureSpecMode == MeasureSpec.AT_MOST && heightMeasureSpecMode == MeasureSpec.AT_MOST) {
                 if (textMeasuredSize > measuredWidth || textMeasuredSize > measuredHeight) {
                     setMeasuredDimension(textMeasuredSize, textMeasuredSize)
                 }
@@ -385,7 +384,7 @@ class CircleImageView
 
     companion object {
 
-        private val SCALE_TYPE = ImageView.ScaleType.CENTER_CROP
+        private val SCALE_TYPE = ScaleType.CENTER_CROP
 
         private val BITMAP_CONFIG = Bitmap.Config.ARGB_8888
         private const val COLORDRAWABLE_DIMENSION = 2
