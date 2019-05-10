@@ -8,8 +8,8 @@ import androidx.databinding.BindingAdapter
 import cn.wj.base.android.databinding.constants.IMG_DRAWABLE_MARK
 import cn.wj.base.android.databinding.constants.IMG_MIPMAP_MARK
 import cn.wj.base.android.databinding.constants.IMG_RESOURCE_MARK
-import cn.wj.base.expanding.orFalse
-import cn.wj.base.tools.isNotNullAndBlank
+import cn.wj.base.android.databinding.tools.isNotNullAndBlank
+import cn.wj.base.android.databinding.tools.orFalse
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.File

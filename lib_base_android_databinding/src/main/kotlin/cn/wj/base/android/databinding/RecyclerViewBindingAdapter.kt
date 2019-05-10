@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import cn.wj.android.common.widget.recyclerview.FlowLayoutManager
-import cn.wj.android.common.widget.recyclerview.WrapContentLinearLayoutManager
+import cn.wj.base.android.databinding.recycler.WrapContentLinearLayoutManager
 
 /**
  * RecyclerView DataBinding 适配器

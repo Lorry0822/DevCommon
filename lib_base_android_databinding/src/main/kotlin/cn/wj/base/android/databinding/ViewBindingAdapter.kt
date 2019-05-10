@@ -9,8 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
-import cn.wj.base.expanding.orFalse
-import cn.wj.base.expanding.orTrue
+import cn.wj.base.android.databinding.tools.orFalse
+import cn.wj.base.android.databinding.tools.orTrue
 
 /**
  * View DataBinding 适配器

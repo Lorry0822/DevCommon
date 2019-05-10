@@ -1,4 +1,4 @@
-package cn.wj.android.common.widget.recyclerview
+package cn.wj.base.android.databinding.recycler
 
 import android.content.Context
 import android.util.AttributeSet

@@ -1,7 +1,7 @@
 package cn.wj.base.android.databinding
 
 import androidx.databinding.BindingAdapter
-import cn.wj.base.expanding.orFalse
+import cn.wj.base.android.databinding.tools.orFalse
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**

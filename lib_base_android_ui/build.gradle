@@ -33,8 +33,4 @@ dependencies {
 
     /* v7 支持*/
     implementation "androidx.appcompat:appcompat:${rootProject.ext.dependencies.androidx_appcompat_version}"
-
-    /* 基本库 */
-    debugApi project(":lib_base_android")
-    releaseApi "com.github.Lorry0822.DevCommon:lib_base_android:$lib_version"
 }

@@ -1,15 +1,16 @@
 package cn.wj.base.android.ui.popup
 
+import android.content.Context
+import android.content.res.Resources
+import android.graphics.Point
 import android.graphics.Rect
 import android.os.Build
 import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
 import android.widget.PopupWindow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
-import cn.wj.base.android.tools.isNavBarVisible
-import cn.wj.base.android.tools.isSupportNavBar
-import cn.wj.base.android.tools.navBarHeight
 
 /**
  * PopupWindow 基类，封装了一些兼容性处理
@@ -54,12 +55,30 @@ abstract class CommonBasePopupWindow<DB : ViewDataBinding>(open val mContext: Ap
      * @param activity [AppCompatActivity] 对象
      */
     open fun showAtBottom(activity: AppCompatActivity = mContext) {
+
         var height = 0
+
+        val wm = mContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val size = Point()
+        val realSize = Point()
+        display.getSize(size)
+        display.getRealSize(realSize)
+        val isSupportNavBar = realSize.y != size.y || realSize.x != size.x
+
         if (isSupportNavBar) {
             // 支持虚拟按键
-            if (activity.isNavBarVisible()) {
+            val visibility = activity.window.decorView.systemUiVisibility
+            val isNavBarVisible = visibility and View.SYSTEM_UI_FLAG_HIDE_NAVIGATION == 0
+            if (isNavBarVisible) {
                 // 显示导航栏
-                height = navBarHeight
+                val res = Resources.getSystem()
+                val resourceId = res.getIdentifier("navigation_bar_height", "dimen", "android")
+                height = if (resourceId != 0) {
+                    res.getDimensionPixelSize(resourceId)
+                } else {
+                    0
+                }
             }
         }
         showAtLocation(activity.window.decorView, Gravity.BOTTOM, 0, height)

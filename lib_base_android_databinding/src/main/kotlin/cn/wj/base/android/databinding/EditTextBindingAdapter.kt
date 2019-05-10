@@ -6,7 +6,7 @@ import android.view.KeyEvent
 import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import cn.wj.base.expanding.orFalse
+import cn.wj.base.android.databinding.tools.orFalse
 
 /**
  * EditText DataBinding 适配器
