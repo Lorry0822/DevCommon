@@ -1,16 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-//apply plugin: 'com.novoda.bintray-release'
-//
-//publish {
-//    userOrg = 'wangjie0822dev' // bintray账户下某个组织id
-//    groupId = 'cn.wj.base' // maven仓库下库的包名，一般为模块包名
-//    artifactId = 'dev-base-android' //项目名称
-//    publishVersion = '1.0.0' //版本号
-//    desc = '' // 项目介绍，可以不写
-//    website = '' // 项目主页，可以不写
-//}
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.Lorry0822'
 
 android {
 
