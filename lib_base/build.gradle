@@ -1,6 +1,10 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.Lorry0822'
+
 //apply plugin: 'com.novoda.bintray-release'
 //
 //publish {
