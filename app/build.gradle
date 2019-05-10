@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        flavorDimensions "versionCode"
+
+        testInstrumentationRunner 'androidx.test.ext.junit.runners.AndroidJUnit4'
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            //              Java             Kotlin
+            java.srcDirs = ['src/main/java', 'src/main/kotlin']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    dataBinding { // DataBinding 开启
+        enabled true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+}
+
+dependencies {
+
+    /* 测试 */
+    testImplementation "junit:junit:${rootProject.ext.dependencies.junit_version}"
+    testImplementation "org.mockito:mockito-inline:${rootProject.ext.dependencies.test_mokito}"
+    androidTestImplementation "androidx.test:core:${rootProject.ext.dependencies.test_core}"
+    androidTestImplementation "org.mockito:mockito-android:${rootProject.ext.dependencies.test_mokito}"
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.dependencies.junit_ext_version}"
+    androidTestImplementation "androidx.test.ext:truth:${rootProject.ext.dependencies.junit_ext_version}"
+    androidTestImplementation "com.google.truth:truth:${rootProject.ext.dependencies.google_truth}"
+    androidTestImplementation "androidx.test:rules:${rootProject.ext.dependencies.test_rules_version}"
+    androidTestImplementation "androidx.test:runner:${rootProject.ext.dependencies.test_runner_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-web:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:${rootProject.ext.dependencies.test_espresso_version}"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:${rootProject.ext.dependencies.test_uiautomator_v18}"
+
+    /* Kotlin 支持 */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    /* Kotlin 协程 */
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.dependencies.kotlinx_coroutines}"
+
+    /* Dex 分割 */
+    implementation "androidx.multidex:multidex:${rootProject.ext.dependencies.multidex_version}"
+
+    /* v4 支持 */
+    implementation "androidx.legacy:legacy-support-v4:${rootProject.ext.dependencies.androidx_lib_version}"
+    /* v7 支持*/
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.dependencies.androidx_appcompat_version}"
+    /* RecyclerView */
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.dependencies.androidx_lib_version}"
+    /* Design 支持 */
+    implementation "com.google.android.material:material:${rootProject.ext.dependencies.androidx_lib_version}"
+    /* 约束性布局 */
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.dependencies.constraintlayout_version}"
+}

@@ -1,0 +1,49 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'wangjie0822dev' // bintray账户下某个组织id
+    groupId = 'cn.wj.base' // maven仓库下库的包名，一般为模块包名
+    artifactId = 'DevBase' //项目名称
+    publishVersion = '1.0.0' //版本号
+    desc = '' // 项目介绍，可以不写
+    website = '' // 项目主页，可以不写
+}
+
+sourceSets {
+    main {
+        //              Java             Kotlin
+        java.srcDirs = ['src/main/java', 'src/main/kotlin']
+    }
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+buildscript {
+    ext.kotlin_version = '1.3.31'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}

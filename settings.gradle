@@ -1,0 +1,1 @@
+include ':app', ':lib_base', ':lib_base_android', ':lib_base_android_ui', ':lib_base_android_widget', ':lib_base_android_adapter', ':lib_base_android_databinding'
